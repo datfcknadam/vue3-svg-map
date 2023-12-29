@@ -1,4 +1,4 @@
-# vue-svg-map
+# vue-svg-map Vue3 compatible
 
 [![npm version](https://badge.fury.io/js/vue-svg-map.svg)](https://badge.fury.io/js/vue-svg-map)
 [![Build Status](https://travis-ci.com/VictorCazanave/vue-svg-map.svg?branch=master)](https://travis-ci.com/VictorCazanave/vue-svg-map)
@@ -12,17 +12,13 @@ _A set of Vue.js components to display an interactive SVG map._
 
 ## Demo
 
-[Take a look at the live demo!](https://victorcazanave.github.io/vue-svg-map/)
+[Take a look at the live demo!](https://melenas1414.github.io/vue-svg-map/)
 
 ## Installation
 
 ### npm
 
-`npm install --save vue-svg-map`
-
-### yarn
-
-`yarn add vue-svg-map`
+`npm install --save vue3-svg-map`
 
 ## Usage
 
@@ -44,7 +40,7 @@ In a SFC (Single File Component):
 </template>
 
 <script>
-import { SvgMap } from "vue-svg-map";
+import { SvgMap } from "vue3-svg-map";
 import Taiwan from "@svg-maps/taiwan";
 
 export default {
