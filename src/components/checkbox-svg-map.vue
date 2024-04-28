@@ -6,7 +6,6 @@
 		location-tabindex="0"
 		:is-location-selected="isLocationSelected"
 		@click="toggleLocation"
-		@keydown.prevent.space="toggleLocation"
 	>
 		<!-- Pass down slots to SvgMap: https://stackoverflow.com/a/50892881/9826498 -->
 		<template
