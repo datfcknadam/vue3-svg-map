@@ -1,10 +1,11 @@
 {
 	"name": "vue3-svg-map",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "A set of Vue.js components to display an interactive SVG map, Vue3 compatible",
 	"author": "Egor Kulikov <egor.kulikov.dev@gmail.com>",
 	"keywords": [
 		"vue",
+		"vue3",
 		"component",
 		"svg",
 		"interactive",
