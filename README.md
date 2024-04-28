@@ -1,11 +1,5 @@
 # vue-svg-map Vue3 compatible
 
-[![npm version](https://badge.fury.io/js/vue-svg-map.svg)](https://badge.fury.io/js/vue-svg-map)
-[![Build Status](https://travis-ci.com/VictorCazanave/vue-svg-map.svg?branch=master)](https://travis-ci.com/VictorCazanave/vue-svg-map)
-[![codecov](https://codecov.io/gh/VictorCazanave/vue-svg-map/branch/master/graph/badge.svg)](https://codecov.io/gh/VictorCazanave/vue-svg-map)
-[![Dependency Status](https://david-dm.org/VictorCazanave/vue-svg-map.svg)](https://david-dm.org/VictorCazanave/vue-svg-map)
-[![peerDependencies Status](https://david-dm.org/VictorCazanave/vue-svg-map/peer-status.svg)](https://david-dm.org/VictorCazanave/vue-svg-map?type=peer)
-
 _A set of Vue.js components to display an interactive SVG map._
 
 ![Vue SVG Map](https://media.giphy.com/media/QWpIwVdhY81RL05iNo/giphy.gif)
@@ -30,9 +24,9 @@ This is the base component to display an SVG map.
 
 In a SFC (Single File Component):
 
-- Import `SvgMap` component from `vue-svg-map`
+- Import `SvgMap` component from `vue3-svg-map`
 - Import the map you want
-- Optionally, import `vue-svg-map/dist/index.css` if you want to apply the default styles
+- Optionally, import `vue3-svg-map/style.css` if you want to apply the default styles
 
 ```vue
 <template>
@@ -56,7 +50,7 @@ export default {
 };
 </script>
 
-<style src="vue-svg-map/dist/index.css"></style>
+<style src="vue3-svg-map/style.css"></style>
 ```
 
 #### Props
@@ -86,9 +80,9 @@ There are 2 named slots:
 This is an implementation of `SvgMap` that behaves like a group of checkboxes.  
 It is based on this [WAI-ARIA example](https://www.w3.org/TR/wai-aria-practices/examples/checkbox/checkbox-1/checkbox-1.html) to support keyboard navigation and be accessible.
 
-- Import `CheckboxSvgMap` component from `vue-svg-map`
+- Import `CheckboxSvgMap` component from `vue3-svg-map`
 - Import the map you want
-- Optionally, import `vue-svg-map/dist/index.css` if you want to apply the default styles
+- Optionally, import `vue-svg-map/style.css` if you want to apply the default styles
 
 ```vue
 <template>
@@ -96,7 +90,7 @@ It is based on this [WAI-ARIA example](https://www.w3.org/TR/wai-aria-practices/
 </template>
 
 <script>
-import { CheckboxSvgMap } from "vue-svg-map";
+import { CheckboxSvgMap } from "vue3-svg-map";
 import Taiwan from "@svg-maps/taiwan";
 
 export default {
@@ -113,7 +107,7 @@ export default {
 };
 </script>
 
-<style src="vue-svg-map/dist/index.css"></style>
+<style src="vue3-svg-map/style.css"></style>
 ```
 
 #### Props
@@ -147,9 +141,9 @@ Like in `SvgMap` there are 2 named slots:
 This is an implementation of `SvgMap` that behaves like a group of radio buttons.  
 It is based on this [WAI-ARIA example](https://www.w3.org/TR/wai-aria-practices/examples/radio/radio-1/radio-1.html) to support keyboard navigation and be accessible.
 
-- Import `RadioSvgMap` component from `vue-svg-map`
+- Import `RadioSvgMap` component from `vue3-svg-map`
 - Import the map you want
-- Optionally, import `vue-svg-map/dist/index.css` if you want to apply the default styles
+- Optionally, import `vue-svg-map/style.css` if you want to apply the default styles
 
 ```vue
 <template>
@@ -157,7 +151,7 @@ It is based on this [WAI-ARIA example](https://www.w3.org/TR/wai-aria-practices/
 </template>
 
 <script>
-import { RadioSvgMap } from "vue-svg-map";
+import { RadioSvgMap } from "vue3-svg-map";
 import Taiwan from "@svg-maps/taiwan";
 
 export default {
@@ -174,7 +168,7 @@ export default {
 };
 </script>
 
-<style src="vue-svg-map/dist/index.css"></style>
+<style src="vue3-svg-map/style.css"></style>
 ```
 
 #### Props
@@ -208,7 +202,7 @@ Like in `SvgMap` there are 2 named slots:
 
 ### Existing maps
 
-All the existing maps are in an independant [svg-maps](https://github.com/VictorCazanave/svg-maps) project because they may be useful for other components/projects.
+All the existing maps are in an independent [svg-maps](https://github.com/VictorCazanave/svg-maps) project because they may be useful for other components/projects.
 
 ### Custom maps
 
@@ -226,7 +220,7 @@ You can modify existing maps or create your own.
 </template>
 
 <script>
-import { SvgMap } from "vue-svg-map";
+import { SvgMap } from "vue3-svg-map";
 import Taiwan from "@svg-maps/taiwan";
 
 export default {
