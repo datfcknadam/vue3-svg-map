@@ -6,7 +6,6 @@
 		location-role="radio"
 		:location-tabindex="getLocationTabindex"
 		:is-location-selected="isLocationSelected"
-		v-on="$listeners"
 		@click="selectLocation($event.target)"
 		@keydown.space.prevent="toggleLocation"
 		@keydown.down.prevent="selectNextLocation"
@@ -16,7 +15,7 @@
 	>
 		<!-- Pass down slots to SvgMap: https://stackoverflow.com/a/50892881/9826498 -->
 		<template
-			v-for="(_, slotName) of $scopedSlots"
+			v-for="(_, slotName) of $slots"
 			v-slot:[slotName]="scope"
 		>
 			<slot

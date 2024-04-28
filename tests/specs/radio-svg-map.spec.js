@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import { nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
 import map from '../mocks/fake-map'
-import SvgMap from '../../src/components/svg-map'
-import RadioSvgMap from '../../src/components/radio-svg-map'
+import SvgMap from '@/components/svg-map.vue'
+import RadioSvgMap from '@/components/radio-svg-map.vue'
 
 describe('RadioSvgMap component', () => {
 	const value = 'id1'
@@ -14,23 +14,22 @@ describe('RadioSvgMap component', () => {
 		wrapper = mount(RadioSvgMap, {
 			propsData: { map, value },
 		})
-		svgMap = wrapper.find(SvgMap)
+		svgMap = wrapper.findComponent(SvgMap)
 		locations = svgMap.findAll('path')
 	})
 
 	it('selects location of inital value property', () => {
-		expect(locations.at(0).attributes('aria-checked')).toBeFalsy()
+		expect(locations.at(0).attributes('aria-checked')).toBe('false')
 		expect(locations.at(1).attributes('aria-checked')).toBeTruthy()
-		expect(locations.at(2).attributes('aria-checked')).toBeFalsy()
+		expect(locations.at(2).attributes('aria-checked')).toBe('false')
 	})
 
 	it('selects location of new value property', async () => {
 		wrapper.setProps({ value: 'id0' })
-		await Vue.nextTick()
-
+		await nextTick();
 		expect(locations.at(0).attributes('aria-checked')).toBeTruthy()
-		expect(locations.at(1).attributes('aria-checked')).toBeFalsy()
-		expect(locations.at(2).attributes('aria-checked')).toBeFalsy()
+		expect(locations.at(1).attributes('aria-checked')).toBe('false')
+		expect(locations.at(2).attributes('aria-checked')).toBe('false')
 	})
 
 	it('sets only selected location as focusable', () => {
@@ -41,7 +40,7 @@ describe('RadioSvgMap component', () => {
 
 	it('sets only first location as focusable when no selected location', async () => {
 		wrapper.setProps({ value: null })
-		await Vue.nextTick()
+		await nextTick()
 
 		expect(locations.at(0).attributes('tabindex')).toBe('0')
 		expect(locations.at(1).attributes('tabindex')).toBe('-1')
@@ -80,7 +79,6 @@ describe('RadioSvgMap component', () => {
 
 	it('emits first location when pressing down or right arrow on last location', async () => {
 		wrapper.setProps({ value: 'id2' })
-		await Vue.nextTick()
 		locations.at(2).trigger('keydown.right')
 
 		expect(wrapper.emitted().change[0][0]).toEqual('id0')
@@ -94,7 +92,6 @@ describe('RadioSvgMap component', () => {
 
 	it('emits last location when pressing up or left arrow on first location', async () => {
 		wrapper.setProps({ value: 'id0' })
-		await Vue.nextTick()
 		locations.at(0).trigger('keydown.left')
 
 		expect(wrapper.emitted().change[0][0]).toEqual('id2')

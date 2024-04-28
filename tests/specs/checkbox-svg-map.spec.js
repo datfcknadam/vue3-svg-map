@@ -1,8 +1,7 @@
-import Vue from 'vue'
 import { mount } from '@vue/test-utils'
 import map from '../mocks/fake-map'
-import SvgMap from '../../src/components/svg-map'
-import CheckboxSvgMap from '../../src/components/checkbox-svg-map'
+import SvgMap from '@/components/svg-map.vue'
+import CheckboxSvgMap from '@/components/checkbox-svg-map.vue'
 
 describe('CheckboxSvgMap component', () => {
 	const value = ['id0']
@@ -14,23 +13,21 @@ describe('CheckboxSvgMap component', () => {
 		wrapper = mount(CheckboxSvgMap, {
 			propsData: { map, value },
 		})
-		svgMap = wrapper.find(SvgMap)
+		svgMap = wrapper.findComponent(SvgMap)
 		locations = svgMap.findAll('path')
 	})
 
 	it('selects locations of inital value property', () => {
 		expect(locations.at(0).attributes('aria-checked')).toBeTruthy()
-		expect(locations.at(1).attributes('aria-checked')).toBeFalsy()
-		expect(locations.at(2).attributes('aria-checked')).toBeFalsy()
+		expect(locations.at(1).attributes('aria-checked')).toBe('false')
+		expect(locations.at(2).attributes('aria-checked')).toBe('false')
 	})
 
 	it('selects locations of new value property', async () => {
 		wrapper.setProps({ value: ['id0', 'id1'] })
-		await Vue.nextTick()
-
 		expect(locations.at(0).attributes('aria-checked')).toBeTruthy()
 		expect(locations.at(1).attributes('aria-checked')).toBeTruthy()
-		expect(locations.at(2).attributes('aria-checked')).toBeFalsy()
+		expect(locations.at(2).attributes('aria-checked')).toBe('false')
 	})
 
 	it('emits new selected locations when clicking on location', () => {

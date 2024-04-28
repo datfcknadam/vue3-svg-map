@@ -18,8 +18,7 @@
 			:role="locationRole"
 			:aria-label="location.name"
 			:aria-checked="isLocationSelected && isLocationSelected(location, index)"
-			v-bind="getLocationCustomProperties(location)"
-			v-on="$listeners"
+			v-bind="{ ...$attrs, ...getLocationCustomProperties(location) }"
 		/>
 		<slot name="after" />
 	</svg>

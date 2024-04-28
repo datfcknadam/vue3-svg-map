@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 import map from '../mocks/fake-map'
-import SvgMap from '../../src/components/svg-map'
+import SvgMap from '@/components/svg-map.vue'
 
 describe('SvgMap component', () => {
 	it('renders map with default props', () => {
