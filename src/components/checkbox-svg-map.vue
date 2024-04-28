@@ -57,9 +57,11 @@ export default {
 		toggleLocation(target) {
 			if (target.attributes['aria-checked'] && target.attributes['aria-checked'].value === 'true') {
 				// Delete location
+				this.$emit('remove', target.id)
 				return this.$emit('change', this.value.filter(location => location !== target.id))
 			}
 			// Add location
+			this.$emit('add', target.id)
 			return this.$emit('change', this.value.concat([target.id]))
 		},
 	},
