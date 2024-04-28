@@ -5,7 +5,7 @@
 		location-role="checkbox"
 		location-tabindex="0"
 		:is-location-selected="isLocationSelected"
-		@click="toggleLocation"
+		@select="toggleLocation"
 	>
 		<!-- Pass down slots to SvgMap: https://stackoverflow.com/a/50892881/9826498 -->
 		<template
@@ -52,21 +52,15 @@ export default {
 		/**
 		 * Select/deselect a location
 	 	 *
-	 	 * @param {Event} event - Triggered event
+	 	 * @param {Event.AT_TARGET} target - Triggered event
 	 	 */
-		toggleLocation(event) {
-			const locationElt = event.target
-			let selectedLocations
-
-			if (locationElt.attributes['aria-checked'] && locationElt.attributes['aria-checked'].value === 'true') {
+		toggleLocation(target) {
+			if (target.attributes['aria-checked'] && target.attributes['aria-checked'].value === 'true') {
 				// Delete location
-				selectedLocations = this.value.filter(location => location !== locationElt.id)
-			} else {
-				// Add location
-				selectedLocations = [...this.value, locationElt.id]
+				return this.$emit('change', this.value.filter(location => location !== target.id))
 			}
-
-			this.$emit('change', selectedLocations)
+			// Add location
+			return this.$emit('change', this.value.concat([target.id]))
 		},
 	},
 }

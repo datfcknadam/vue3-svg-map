@@ -4,6 +4,8 @@
 		:viewBox="map.viewBox"
 		:aria-label="map.label"
 		class="svg-map"
+		@click="click"
+		@keydown.prevent.space="click"
 	>
 		<slot name="before" />
 		<path
@@ -65,6 +67,9 @@ export default {
 		},
 	},
 	methods: {
+		click({ target }) {
+			this.$emit('select', target)
+		},
 		/**
 		 * Get custom properties of a location to add custom attributes to <path>
 		 *
