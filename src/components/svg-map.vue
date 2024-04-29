@@ -79,7 +79,7 @@ export default {
 		getLocationCustomProperties(location) {
 			// Filter default properties to avoid invalid/duplicated attributes
 			return Object.fromEntries(
-				Object.entries(location).filter(([key]) => !LOCATION_DEFAULT_PROPERTIES.includes(key))
+				Object.entries(location).filter(([key]) => !LOCATION_DEFAULT_PROPERTIES.includes(key)),
 			)
 		},
 	},

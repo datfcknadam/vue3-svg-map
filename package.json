@@ -1,6 +1,6 @@
 {
 	"name": "vue3-svg-map",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"description": "A set of Vue.js components to display an interactive SVG map, Vue3 compatible",
 	"author": "Egor Kulikov <egor.kulikov.dev@gmail.com>",
 	"keywords": [
@@ -36,7 +36,7 @@
 	"scripts": {
 		"build": "vite build",
 		"lint": "eslint src/ demo/src/ --ext .js,.vue",
-		"test": "vitest",
+		"test": "vitest run",
 		"prepublish": "npm run lint && npm run test && npm run build"
 	},
 	"homepage": "https://github.com/datfcknadam/vue3-svg-map#readme",

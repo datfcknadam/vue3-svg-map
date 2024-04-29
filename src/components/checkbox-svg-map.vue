@@ -7,10 +7,9 @@
 		:is-location-selected="isLocationSelected"
 		@select="toggleLocation"
 	>
-		<!-- Pass down slots to SvgMap: https://stackoverflow.com/a/50892881/9826498 -->
 		<template
 			v-for="(_, slotName) of $slots"
-			v-slot:[slotName]="scope"
+			#[slotName]="scope"
 		>
 			<slot
 				v-bind="scope"
@@ -55,7 +54,7 @@ export default {
 	 	 * @param {Event.AT_TARGET} target - Triggered event
 	 	 */
 		toggleLocation(target) {
-			if (target.attributes['aria-checked'] && target.attributes['aria-checked'].value === 'true') {
+			if (target.attributes['aria-checked']?.value === 'true') {
 				// Delete location
 				this.$emit('remove', target.id)
 				return this.$emit('change', this.value.filter(location => location !== target.id))
