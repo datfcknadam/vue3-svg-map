@@ -78,9 +78,9 @@ export default {
 		 */
 		getLocationCustomProperties(location) {
 			// Filter default properties to avoid invalid/duplicated attributes
-			return Object.fromEntries(
-				Object.entries(location).filter(([key]) => !LOCATION_DEFAULT_PROPERTIES.includes(key)),
-			)
+			const copyLocation = { ...location }
+			LOCATION_DEFAULT_PROPERTIES.forEach(key => delete copyLocation[key])
+			return copyLocation
 		},
 	},
 }

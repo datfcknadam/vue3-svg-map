@@ -22,7 +22,7 @@ describe('CheckboxSvgMap component', () => {
 		locations = svgMap.findAll('path')
 	})
 
-	it('selects locations of inital value property', () => {
+	it('selects locations of initial value property', () => {
 		expect(locations.at(0).attributes('aria-checked')).toBeTruthy()
 		expect(locations.at(1).attributes('aria-checked')).toBe('false')
 		expect(locations.at(2).attributes('aria-checked')).toBe('false')

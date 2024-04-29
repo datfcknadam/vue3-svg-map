@@ -16,7 +16,7 @@
 		<!-- Pass down slots to SvgMap: https://stackoverflow.com/a/50892881/9826498 -->
 		<template
 			v-for="(_, slotName) of $slots"
-			v-slot:[slotName]="scope"
+			#[slotName]="scope"
 		>
 			<slot
 				v-bind="scope"
