@@ -125,8 +125,10 @@ export default {
 Like for `SvgMap` all the listeners (click, keypress...) are applied to each location.
 
 | Event  | Output   | Description                                                                           |
-| ------ | -------- | ------------------------------------------------------------------------------------- |
+|--------|----------|---------------------------------------------------------------------------------------|
 | change | String[] | Emits the new list of ids when a location is selected/unselected. Used for `v-model`. |
+| add    | String   | Emits the new id when a location is selected.                                         |
+| remove | String   | Emits the id  when a location is unselected                                           |
 
 #### Slots
 
