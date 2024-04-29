@@ -4,14 +4,19 @@ import SvgMap from '@/components/svg-map.vue'
 import CheckboxSvgMap from '@/components/checkbox-svg-map.vue'
 
 describe('CheckboxSvgMap component', () => {
-	const value = ['id0']
+	const VALUES = {
+		first: 'id0',
+		second: 'id1',
+		third: 'id2',
+	}
+
 	let wrapper
 	let svgMap
 	let locations
 
 	beforeEach(() => {
 		wrapper = mount(CheckboxSvgMap, {
-			propsData: { map, value },
+			propsData: { map, value: [VALUES.first] },
 		})
 		svgMap = wrapper.findComponent(SvgMap)
 		locations = svgMap.findAll('path')
@@ -24,7 +29,7 @@ describe('CheckboxSvgMap component', () => {
 	})
 
 	it('selects locations of new value property', async () => {
-		wrapper.setProps({ value: ['id0', 'id1'] })
+		wrapper.setProps({ value: [VALUES.first, VALUES.second] })
 		expect(locations.at(0).attributes('aria-checked')).toBeTruthy()
 		expect(locations.at(1).attributes('aria-checked')).toBeTruthy()
 		expect(locations.at(2).attributes('aria-checked')).toBe('false')
@@ -33,13 +38,25 @@ describe('CheckboxSvgMap component', () => {
 	it('emits new selected locations when clicking on location', () => {
 		locations.at(2).trigger('click')
 
-		expect(wrapper.emitted().change[0][0]).toEqual(['id0', 'id2'])
+		expect(wrapper.emitted().change[0][0]).toEqual([VALUES.first, VALUES.third])
+	})
+
+	it('emits new selected location when clicking on location', () => {
+		locations.at(2).trigger('click')
+
+		expect(wrapper.emitted().add[0][0]).toEqual(VALUES.third)
+	})
+
+	it('emits unselected location', () => {
+		wrapper.setProps({ value: [VALUES.first] })
+		locations.at(0).trigger('click')
+		expect(wrapper.emitted().remove[0][0]).toEqual(VALUES.first)
 	})
 
 	it('emits new selected locations when pressing spacebar on location', () => {
 		locations.at(2).trigger('keydown.space')
 
-		expect(wrapper.emitted().change[0][0]).toEqual(['id0', 'id2'])
+		expect(wrapper.emitted().change[0][0]).toEqual([VALUES.first, VALUES.third])
 	})
 
 	it('emits empty array when unselecting all locations', () => {
